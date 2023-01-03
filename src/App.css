@@ -11,10 +11,8 @@
 }
 
 button {
-  background: #246bfd;
-  color: white;
+
   border: none;
-  padding: 0.5rem 0.75rem;
   margin: 0.75rem 0.5rem;
   border-radius: 0.25rem;
   font-weight: bold;
@@ -40,32 +38,43 @@ button:hover {
 .loga{
   display: flex;
   align-items: center;
-  border-radius: 10px;
-  height: 2rem;
-  width: 6rem;;
+  border-radius: 15px;
+  height: 3rem;
+  width: 15rem;
+  border:none;
+  font-size: 1rem;
+  font-weight: 600;
+
 }
 
 .bsp{
-  width: 100%;
+  width: 87vw;
   display:flex;
   margin-top: 4rem;
-  justify-content: left;
-  padding-left: 2rem;
+  justify-content: right;
+  margin-left: 2rem;
+  font-weight: bold;
+  
 }
 
 .logb{
   background: linear-gradient(91.44deg, #D800A8 17.68%, #FF007A 88.87%);
 box-shadow: 0px 11.6153px 29.0382px rgba(253, 0, 124, 0.25);
 border-radius: 8px;
-width: 5rem;
+width: 10rem;
 height: 3rem;
+color: #FFF;
+font-weight: 900;
+font-size: 1rem;
+
 }
 
 .logd{
   display: flex;
   align-items: center;
   justify-content: center;
-  top:50%;
+  margin-top: 15rem;
+  width: auto;
   
 }
 .sec2{
@@ -80,10 +89,14 @@ height: 3rem;
 
 .btn1{
   border-radius: 22px;
-  mask-image: url('public/V.png');
   background: #232323;
   height:4.5rem;
   width:4.5rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
+  
 }
 
 .miniNav{
@@ -95,9 +108,16 @@ height: 3rem;
   justify-content: space-between;
   font-weight: 700;
 
-  padding-left: 3rem;
+  padding-right: 2rem;
 
   align-items: center;
+  
+}
+
+.miniNav h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-left: 2rem;
 }
 
 
@@ -111,5 +131,5 @@ body{
   color:#FFF;
    display: flex;
    justify-content: center;
-
+  
 }

@@ -18,9 +18,10 @@ huddleIframeApp.methods.connectWallet(address);
       <>
      
       <div className="stream">
-        <div className="btn1"></div>
-        <div className="miniNav"> Holiday hack meet
-              <Connect/>
+        <div className="btn1"><img src="V.png" alt="V"/></div>
+        
+        <div className="miniNav"> <h1>Holiday hack meet
+             </h1> <Connect/>
         </div>
       </div>
 

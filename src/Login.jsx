@@ -53,7 +53,7 @@ const redirect = () => {
     <button onClick={createMeet()}>Create</button>
     </div> */}
     <div className='logd'>
-    <input className='loga' type ='number'placeholder='Enter your meet code' onChange={e => {setCode(e.target.value)}}></input>
+    <input className='loga' type ='number'placeholder='Enter random 7 digit number' onChange={e => {setCode(e.target.value)}}></input>
     <button className='logb' onClick={()=>{console.log("click");redirect()}} >Enter</button>
    </div> </>
     
