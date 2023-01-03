@@ -5,8 +5,23 @@ import { useState,useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const [code,setCode] = useState([]);
+
+
+// const codeMkr = () => {
+//    return num = Date().getTime();
+//    };
+
+
 export  default function Login() {
+
+//     const [meetName,setMeetName] = useState([]);
+
+// const [accName,setAccName] = useState([]);
+
+const [code,setCode] = useState([]);
+//  const createMeet = () => {
+    
+//  }   
 
 const navigate = useNavigate();  
 const { address,isConnected} = useAccount();
@@ -24,15 +39,23 @@ const redirect = () => {
         toast.error('Please connect your wallet first');
     }
 }
-// if(isConnected){
-//     navigate('event');
-//    }
+    
     return(<>  
     <ToastContainer/>
-    <Connect/>
-    <input type ='number'placeholder='Enter your meet code' onChange={e => {setCode(e.target.value)}}></input>
-    <button onClick={()=>{console.log("click");redirect()}} >Enter</button>
-    </>
+
+    <div className='bsp'> <Connect/></div>
+   
+    {/* <div><p>Create a meet</p>
+    <input type ='string'placeholder='Meet Name' 
+    onChange={e => {setMeetName(e.target.value)}}></input>
+    <input type ='string'placeholder='Owner Name' 
+    onChange={e => {setAccName(e.target.value)}}></input>
+    <button onClick={createMeet()}>Create</button>
+    </div> */}
+    <div className='logd'>
+    <input className='loga' type ='number'placeholder='Enter your meet code' onChange={e => {setCode(e.target.value)}}></input>
+    <button className='logb' onClick={()=>{console.log("click");redirect()}} >Enter</button>
+   </div> </>
     
     
     )

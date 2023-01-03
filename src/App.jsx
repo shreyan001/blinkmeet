@@ -3,13 +3,14 @@ import "./App.css";
 import {Routes, Route} from "react-router-dom";
 import Meets from "./Meets";
 import Login from "./Login";
+import Event from "./Event";
 
 function App() {
   return (
   <>  
   <Routes>  
     
-     <Route path="event" element={<Meets/>}/>
+     <Route path="event" element={<Event/>}/>
      <Route path="/" element={<Login/>}/>
 
   </Routes>
