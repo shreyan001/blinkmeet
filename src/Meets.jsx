@@ -1,10 +1,15 @@
 import { huddleIframeApp, HuddleIframe } from "@huddle01/huddle01-iframe";
 import { useEffect, useState } from "react";
+import {Connect} from './Connect';
+import { useAccount } from "wagmi";
 
  function Meets() {
 
-  
-  const [walletAddress, setWalletAddress] = useState("");
+
+  const {address} = useAccount();
+
+  console.log(address);
+
 
   const iframeConfig = {
     roomUrl: "https://iframe.huddle01.com/test-room",
@@ -70,15 +75,11 @@ import { useEffect, useState } from "react";
           </button>
         ))}
 
-        <input
-          type="text"
-          value={walletAddress}
-          onChange={(e) => setWalletAddress(e.target.value)}
-          placeholder="Wallet Address"
-        />
+        <Connect/> 
 
+      
         <button
-          onClick={() => huddleIframeApp.methods.connectWallet(walletAddress)}
+          onClick={() => huddleIframeApp.methods.connectWallet(address)}
         >
           Connect Wallet
         </button>

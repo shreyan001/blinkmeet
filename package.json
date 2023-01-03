@@ -10,9 +10,14 @@
   },
   "dependencies": {
     "@huddle01/huddle01-iframe": "^0.0.8",
+    "@rainbow-me/rainbowkit": "^0.8.1",
+    "ethers": "^5.7.2",
+    "json-server": "^0.17.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.6.1"
+    "react-router-dom": "^6.6.1",
+    "react-toastify": "^9.1.1",
+    "wagmi": "^0.9.6"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
