@@ -133,3 +133,78 @@ body{
    justify-content: center;
   
 }
+
+.talkBox{
+  display: flex;
+  justify-content: space-around;
+  widows: 100%;
+  align-items: flex-start;
+}
+
+section {
+   border-radius: 22px;
+   width: 28%;
+   height: 30rem;
+   background-color: #232323;
+   display: inline-flexbox;
+   justify-content: center;
+   
+   margin: 2rem 2rem 2rem 2rem;
+
+}
+
+.stl1 {
+ display: flex;
+ justify-content: center;
+ align-items: stretch;
+ height: auto;
+}
+
+.stl1 img {
+   
+  width: 85%;
+  text-align: center;
+  height: auto;
+}
+
+section p {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  width: auto ;
+}
+
+.s2 {
+  height: fit-content;
+  align-items: stretch;
+}
+
+.s2 img {
+  margin: 1rem 0 2rem 0;
+}
+
+.s3 img {
+  width: 92%;
+}
+.s3 {
+  width: 31%;
+}
+
+#mydiv {
+  position: absolute;
+  z-index: 9;
+  background-color: #363636;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+  width: 30rem;
+  height: auto;
+  border-radius: 17px;
+}
+
+#mydivheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+}
