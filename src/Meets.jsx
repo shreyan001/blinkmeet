@@ -2,9 +2,19 @@ import { huddleIframeApp, HuddleIframe } from "@huddle01/huddle01-iframe";
 import { useEffect, useState } from "react";
 import {Connect} from './Connect';
 import { useAccount } from "wagmi";
+import Modal from "./Modal";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import Stall from "./Cards/Stall";
+import Table from "./Cards/Table";
+import Drooms from "./Cards/Drooms";
 
  function Meets() {
+  
+  
+  const [isOpen,setOpen] = useState(false);
 
+  
 
   const {address} = useAccount();
 
@@ -13,27 +23,25 @@ import { useAccount } from "wagmi";
 
   const iframeConfig = {
     roomUrl: "https://iframe.huddle01.com/test-room",
-    height: "600px",
-    width: "80%",
+    width: "90%",
+    noBorder: true
   };
 
-  const reactions = [
-    "😂",
-    "😢",
-    "😦",
-    "😍",
-    "🤔",
-    "👀",
-    "🙌",
-    "👍",
-    "👎",
-    "🔥",
-    "🍻",
-    "🚀",
-    "🎉",
-    "❤️",
-    "💯",
-  ];
+  const iframeConfig1 = {
+    roomUrl: "https://iframe.huddle01.com/101",
+    width: "100%",
+    height: "97%",
+    noBorder: true,
+  };
+
+  const iframeConfig2 = {
+    roomUrl: "https://iframe.huddle01.com/211",
+    width: "80%",
+  };
+  const iframeConfig3 = {
+    roomUrl: "https://iframe.huddle01.com/131",
+    width: "80%",
+  };
 
   useEffect(() => {
     huddleIframeApp.on("peer-join", (data) =>
@@ -45,47 +53,61 @@ import { useAccount } from "wagmi";
   }, []);
 
   return (
-    <div className="App">
-      <div className="container">
-        <div>
-          <br />
-
-          {Object.keys(huddleIframeApp.methods)
-            .filter((key) => !["sendReaction", "connectWallet"].includes(key))
-            .map((key) => (
-              <button
-                key={key}
-                onClick={() => {
-                  huddleIframeApp.methods[key]();
-                }}
-              >
-                {key}
-              </button>
-            ))}
-        </div>
-
-        <HuddleIframe config={iframeConfig} />
-        <br />
-        {reactions.map((reaction) => (
-          <button
-            key={reaction}
-            onClick={() => huddleIframeApp.methods.sendReaction(reaction)}
-          >
-            {reaction}
-          </button>
-        ))}
-
-        <Connect/> 
-
-      
-        <button
+    <>
+    <Modal className="mod1" iframeData={iframeConfig1} address="address" isOpen={isOpen} onClose={()=>{setOpen(false)}}/>
+    <div className="stream">
+    <div className="btn1"><img src="V.png" alt="V"/></div>
+    
+    <div className="miniNav"> <h1>Holiday hack meet
+         </h1> <Connect/>
+    </div>
+  </div>
+  <button className="button1"
           onClick={() => huddleIframeApp.methods.connectWallet(address)}
         >
           Connect Wallet
         </button>
-      </div>
-    </div>
-  );
+     
+  <div className="sec2">
+
+  
+ 
+  <HuddleIframe config={iframeConfig} className="huddle" />
+        {console.log(HuddleIframe)}
+  
+
+  </div>
+ 
+ <div className="talkBox">
+ <section className="s1">
+ <p>Stalls</p>
+ <div className="flexMap"> 
+    <div className="stl1" onClick={()=>{setOpen(true)}}> <img  src="stall.svg" alt="stall"/></div> 
+    <Stall/>
+ </div>
+ </section>
+ <section className="s2">
+    <p>Open Tables</p> 
+   <div className="flexMap"> <Table/>
+    <div className="stl1"> <img  src="tabl1.svg" alt="tabl1"/></div>
+    <div className="stl1"> <img  src="tabl2.svg" alt="tabl2"/></div> </div>
+ </section>
+ <section className="s3">
+    <p>Discussion Rooms</p>
+    <div className="flexMap"> 
+    <Drooms/>
+    <div className="stl1"> <img src="Group 27.svg" alt="grp2"/>
+    </div> </div>
+    
+    
+ </section>
+ </div>
+  
+  
+
+      
+       
+  </>);
 }
 
 export default Meets;

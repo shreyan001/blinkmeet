@@ -1,57 +1,52 @@
 import { Connect } from "./Connect";
-import { HuddleIframe,  huddleIframeApp  } from "@huddle01/huddle01-iframe";
+import { huddleIframeApp, HuddleIframe } from "@huddle01/huddle01-iframe";
 import { useAccount } from "wagmi";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Modal from "./Modal";
  
-const iframeConfig = {
-    roomUrl: "https://iframe.huddle01.com/123",
-    noBorder: false, // false by default
-  };
-  const iframeConfig1 = {
-   roomUrl: "https://iframe.huddle01.com/test-room",
-   noBorder: false, // false by default
- };
- const iframeConfig2 = {
-   roomUrl: "https://iframe.huddle01.com/222",
-   noBorder: false, // false by default
- };
- const iframeConfig3 = {
-   roomUrl: "https://iframe.huddle01.com/121",
-   noBorder: false, // false by default
- };
+const iframeConfig1 = {
+  roomUrl: "https://iframe.huddle01.com/test-room",
+  height: "600px",
+  width: "80%",
+};
+//   const iframeConfig1 = {
+//    roomUrl: "https://iframe.huddle01.com/123",
+//    noBorder: false, // false by default
+//  };
+//  const iframeConfig2 = {
+//    roomUrl: "https://iframe.huddle01.com/123",
+//    noBorder: false, // false by default
+//  };
+//  const iframeConfig3 = {
+//    roomUrl: "https://iframe.huddle01.com/123",
+//    noBorder: false, // false by default
+//  };
 
  
+
+
 
 const Event = () => {
 
- const [vis1, setVis1]  = useState("hidden");
- const [vis2, setVis2]  = useState("hidden");
- const [vis3, setVis3]  = useState("hidden");
-
- console.log(vis2);
+ 
    const {address} = useAccount(); 
    
 huddleIframeApp.methods.connectWallet(address);
+const parts = huddleIframeApp.infoMethods.getParticipants();
 
- const isVisible = (x) => {
-   if(x===1){
-     setVis1("visible");
-   }
-   else if(x===2){
-      setVis2("visible");
-    }
-    else if(x===3){
-      setVis3("visible");
-    }
-   
- }
+useEffect(() => {
+  huddleIframeApp.on("peer-join", (data) =>
+    console.log({ iframeData: data })
+  );
+  huddleIframeApp.on("peer-left", (data) =>
+    console.log({ iframeData: data })
+  );
+}, []);
+ 
    return (
 
-      <>
-     <Modal props={iframeConfig1}  visibility= {vis1}/>
-     <Modal props={iframeConfig2} visibility= {vis2} />
-     <Modal props={iframeConfig3} visibility= {vis3} />
+      <><Modal/>
+       
       <div className="stream">
         <div className="btn1"><img src="V.png" alt="V"/></div>
         
@@ -61,7 +56,12 @@ huddleIframeApp.methods.connectWallet(address);
       </div>
 
       <div className="sec2">
-      <HuddleIframe config={iframeConfig} />
+    
+      <HuddleIframe config={iframeConfig1} />
+      <br/>
+      {
+   console.log(parts)}
+      {console.log(HuddleIframe)}
       </div>
      
      <div className="talkBox">
@@ -86,6 +86,9 @@ huddleIframeApp.methods.connectWallet(address);
 
 
    );
+
+
+
     
 
 }

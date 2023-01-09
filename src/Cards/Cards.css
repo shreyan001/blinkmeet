@@ -1,0 +1,275 @@
+.stall1 {
+    border-radius: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 22rem;
+    width: 75%;
+    background: #0D0D0D;
+    
+    padding: 2rem 2rem 2rem 2rem;
+   
+    
+}
+
+.head1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+  .head1 h3 {
+     font-size: 1.6rem;
+     font-weight: 600;
+  }  
+
+  .head1 h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: gray;
+ }  
+
+
+
+.profles {
+    display: flex;
+    height: 6rem;
+    width: auto;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.profles span {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: gray;
+    
+}
+
+.nameit{
+   font-size: 0.7rem;
+   font-weight: 500;
+   color: #FFF;
+}
+
+
+
+.profles img {
+    height: 50%;
+    width: auto;
+ 
+}
+
+.arrange1 {
+    display:grid;
+    grid-template-columns: 42% 42%;
+    gap: 1rem 2rem;
+    width: 100%;
+    text-align: center;
+}
+
+.button12{
+    background: linear-gradient(91.44deg, #D800A8 17.68%, #FF007A 88.87%);
+    box-shadow: 0px 11.6153px 29.0382px rgba(253, 0, 124, 0.25);
+    border-radius: 1rem;
+    width: 9rem;
+    height: 3.4rem;
+    color: #000;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.mem{
+    font-weight: 500;
+    font-size: 0.75rem;
+    padding-right: 1rem;
+}
+
+.botm{
+    margin-bottom: 1.2rem;
+}
+
+
+.table1 {
+    border-radius: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 14rem;
+    width: 60%;
+    background: #0D0D0D;
+    
+    padding: 2rem 2rem 2rem 2rem;
+}
+
+
+.arrange2{
+    display:grid;
+    grid-template-columns: 42% 42%;
+    gap: 1rem 2rem;
+    width: 100%;
+    text-align: center;
+    
+}
+
+ .profles1 {
+    display: flex;
+    height: 5rem;
+    width: auto;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+   
+
+}
+
+
+.nameit{
+   font-size: 0.7rem;
+   font-weight: 500;
+   color: #FFF;
+
+}
+
+
+
+.profles1 img {
+    height: 50%;
+    width: auto;
+    margin:0;
+ 
+}
+
+.joindef{
+   display: flex;
+   height: 5.3rem;
+   text-align: center;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 5.3rem;
+   background: #232323;
+   border-radius: 12px;
+}
+
+
+
+.joindef1 h3 {
+    color: gray;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+.joindef1 h4 {
+    color: gray;
+    font-size: 0.7rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+
+.stall4{
+    border-radius: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 15rem;
+    width: 75%;
+    background: #0D0D0D;
+    
+    padding: 2rem 2rem 2rem 2rem;
+   
+}
+
+
+.head4{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.3rem;
+    width: 100%;
+    
+}
+
+
+  .Dhead1{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid white;
+    justify-content:space-around;
+    height: 60%;
+  }
+  .Dhead1 h2 {
+     font-size: 0.75rem;
+     font-weight: 600;
+     margin:0;
+  }  
+
+  .Dhead1 h3 {
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: gray;
+    margin: 0;
+ }  
+
+ .arrange4{
+    display:grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    gap: 0.5rem 1rem;
+    width: 100%;
+    text-align: center;
+    height: 65%;
+    
+}
+
+.button123{
+    background: linear-gradient(91.44deg, #D800A8 17.68%, #FF007A 88.87%);
+    box-shadow: 0px 11.6153px 29.0382px rgba(253, 0, 124, 0.25);
+    border-radius: 0.85rem;
+    width: 4.5rem;
+    height: 2rem;
+    color: #000;
+    font-weight: 600;
+    font-size: 0.84rem;
+ }
+
+.profles4{
+    display: flex;
+    height: 3.8rem;
+    width: auto;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profles4 span {
+    font-size: 0.5rem;
+    font-weight: 400;
+    color: gray;
+    
+}
+
+.nameit4{
+   font-size: 0.5rem;
+   font-weight: 500;
+   color: #FFF;
+}
+
+
+.profles4 img {
+    height: 50%;
+    width: auto;
+}

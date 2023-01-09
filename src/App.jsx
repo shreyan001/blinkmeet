@@ -12,10 +12,9 @@ function App() {
     
      <Route path="event" element={<Event/>}/>
      <Route path="/" element={<Login/>}/>
+     <Route path="/meet" element={<Meets/>}/>
 
   </Routes>
-
-  
   </>
 
   )
