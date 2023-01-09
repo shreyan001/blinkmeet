@@ -11,9 +11,6 @@ export default function Stall(){
             </div>})}</div>
             <div className="head1 botm"><p className="mem">+{Users.length - 1} Memebers </p><button className="button12">Join</button></div></div>
          
-            
-            
-         
     )
                     
  
