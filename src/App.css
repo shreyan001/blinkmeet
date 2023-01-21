@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap);
-
 
 .App {
   text-align: center;
@@ -32,7 +30,7 @@ button:hover {
   width : 90vw;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 
   
 }
@@ -53,7 +51,7 @@ button:hover {
 .bsp{
   width: 87vw;
   display:flex;
-  margin-top: 4rem;
+  margin-top: 2rem;
   justify-content: right;
   margin-left: 2rem;
   font-weight: bold;
@@ -126,18 +124,6 @@ font-size: 1rem;
 
 
 
-
-body{
-  background: #363636;
-  font-family: 'Montserrat', sans-serif;
-  margin: 0;
-  color:#FFF;
-   display: flex;
-   justify-content: center;
-   
-  
-}
-
 /* width */
 ::-webkit-scrollbar {
   width: 18px;
@@ -176,6 +162,7 @@ section {
    flex-direction: column;
    justify-content: space-between;
    align-items: center;
+   
    
    margin: 2rem 2rem 2rem 2rem;
 
@@ -301,5 +288,51 @@ font-size: 0.7rem;
    align-items: center;
    width: 100%;
    height: auto;
+}
+
+.colorcode {
+font-style: normal;
+background: linear-gradient(90.54deg, #D800A9 0.22%, #FF007B 50.47%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.colorcode :hover {
+  text-decoration: underline;
+  font-style: normal;
+background: linear-gradient(90.54deg, #D800A9 0.22%, #FF007B 50.47%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.button-x{
+  height: 3rem;
+  width: 9rem;
+ box-sizing: border-box;
+ border: solid rgba(253, 0, 122, 0.61) 2.2px;
+ background: #262626;
+ box-shadow: 0px 8px 20px rgba(253, 0, 124, 0.25);
+ border-radius: 15px;
+  
+}
+
+.button-x :hover{
+
+  opacity: 55%;
 }
 

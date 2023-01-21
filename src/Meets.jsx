@@ -3,23 +3,20 @@ import { useEffect, useState } from "react";
 import {Connect} from './Connect';
 import { useAccount } from "wagmi";
 import Modal from "./Modal";
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import Stall from "./Cards/Stall";
 import Table from "./Cards/Table";
 import Drooms from "./Cards/Drooms";
+import { Player } from "@livepeer/react";
+
 
  function Meets() {
   
   
   const [isOpen,setOpen] = useState(false);
-
-  
-
   const {address} = useAccount();
 
   console.log(address);
-
 
   const iframeConfig = {
     roomUrl: "https://iframe.huddle01.com/test-room",
@@ -62,19 +59,17 @@ import Drooms from "./Cards/Drooms";
          </h1> <Connect/>
     </div>
   </div>
-  <button className="button1"
-          onClick={() => huddleIframeApp.methods.connectWallet(address)}
-        >
-          Connect Wallet
-        </button>
-     
+   
   <div className="sec2">
 
-  
- 
-  <HuddleIframe config={iframeConfig} className="huddle" />
-        {console.log(HuddleIframe)}
-  
+ <div className="streamb"><Player
+      title="stream"
+      playbackId="8dd55f8l5jsiyhd8"
+      poster="cross.svg"
+      showPipButton
+      objectFit="cover"
+      priority
+    /></div> 
 
   </div>
  

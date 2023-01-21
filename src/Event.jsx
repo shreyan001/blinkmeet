@@ -3,6 +3,8 @@ import { huddleIframeApp, HuddleIframe } from "@huddle01/huddle01-iframe";
 import { useAccount } from "wagmi";
 import { useState,useEffect } from "react";
 import Modal from "./Modal";
+import Screen from "./Stream/Screen";
+import { useLivepeerProvider } from "@livepeer/react";
  
 const iframeConfig1 = {
   roomUrl: "https://iframe.huddle01.com/test-room",
@@ -45,42 +47,9 @@ useEffect(() => {
  
    return (
 
-      <><Modal/>
-       
-      <div className="stream">
-        <div className="btn1"><img src="V.png" alt="V"/></div>
-        
-        <div className="miniNav"> <h1>Holiday hack meet
-             </h1> <Connect/>
-        </div>
-      </div>
-
-      <div className="sec2">
-    
-      <HuddleIframe config={iframeConfig1} />
-      <br/>
-      {
-   console.log(parts)}
-      {console.log(HuddleIframe)}
-      </div>
+      <>
      
-     <div className="talkBox">
-     <section className="s1">
-     <p>Stalls</p>
-        <div className="stl1"> <img onClick={()=>{isVisible(1)}} src="stall.svg" alt="stall"/></div>
-     </section>
-     <section className="s2">
-        <p>Open Tables</p> 
-        <div className="stl1"> <img  src="tabl1.svg" alt="tabl1"/></div>
-        <div className="stl1"> <img  src="tabl2.svg" alt="tabl2"/></div> 
-     </section>
-     <section className="s3">
-        <p>Discussion Rooms</p>
-        <div className="stl1"> <img src="Group 27.svg" alt="grp2"/></div> 
-     </section>
-     </div>
-      
-      
+      <Screen/>
       
       </>
 
