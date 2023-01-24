@@ -12,27 +12,30 @@ import 'react-toastify/dist/ReactToastify.css';
 //    };
 
 
-export  default function Login() {
+export  default function Login(authX) {
 
 //     const [meetName,setMeetName] = useState([]);
 
 // const [accName,setAccName] = useState([]);
 
-const [code,setCode] = useState([]);
+
 //  const createMeet = () => {
     
 //  }   
 
+
+
+
 const navigate = useNavigate();  
-const { address,isConnected} = useAccount();
-console.log(address);
+
+
 
 
 const redirect = () => {
-    if(isConnected && code.length===7){
+    if(authX && code.length===7){
        navigate('event');
     }
-    else if(isConnected && code.length !==7) {
+    else if(authX && code.length !==7) {
         toast.error('Meet code must be 7 digits');
     }
     else{
@@ -59,13 +62,15 @@ theme="dark"
 
        <div className='flex w-full mx-auto pt-5 flex-row justify-between items-center '>
 
-         <div className=" mx-2  flex flex-row justify-center items-center h-24 w-1/8">
+         <div className=" mx-2 flex flex-row justify-center items-center h-24 w-1/8">
             <img className="pt-4" src='logo.svg' alt='logo'/>
             <h1 className=' font-semibold m-0 text-lg pr-3'>SpaceMeet</h1></div>
         <div className="mx-2 flex flex-row justify-center items-center h-24 w-fit">
-            <a className='cursor-pointer colorcode font-semibold text-lg px-3'
+            <a className='hover:opacity-60 cursor-pointer colorcode font-semibold text-lg px-3'
                 onClick={()=>{toast.dark("Coming Soon")}}
-                       >Marketplace</a><Connect/></div>
+                       >Marketplace</a><button className="button1 text-sm h-10 w-28 text-black font-semibold"  onClick={()=>{login();
+                       if(authX!== false) {redirect("meets")};}}>Login with Unstoppable</button>
+                       </div>
        </div>
     </nav>
 
@@ -89,8 +94,8 @@ theme="dark"
      <div role="button"className=" button-x h-12 w-36 flex justify-center items-center"><h1 className='colorcode font-semibold text-center'>Create Meet</h1></div>        
      </div>
      <div className=" w-1/2 mx-auto my-2 h-fit flex flex-row justify-center items-center"><h3 className='font-semibold text-lg'>Join a Demo Meet - </h3>
-       <h1 className='colorcode text-xl font-semibold hover:underline'>&nbsp; Demo-Summit-meet</h1></div>
-
+       <h1 className='hover:opacity-60 colorcode text-xl font-semibold hover:underline'>&nbsp; Enter-Code-1234567</h1></div>
+      <button onClick={()=>{navigate('meets')} } className='button1 colorcode'>Click me</button>
     </div>
     </>
     
