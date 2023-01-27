@@ -94,7 +94,8 @@ theme="dark"
      <div role="button"className=" button-x h-12 w-36 flex justify-center items-center"><h1 className='colorcode font-semibold text-center'>Create Meet</h1></div>        
      </div>
      <div className=" w-1/2 mx-auto my-2 h-fit flex flex-row justify-center items-center"><h3 className='font-semibold text-lg'>Join a Demo Meet - </h3>
-       <h1 className='hover:opacity-60 colorcode text-xl font-semibold hover:underline' onClick={()=>{navigate('meet')}}>&nbsp; Enter-Code-1234567</h1></div>
+       <h1 className='hover:opacity-60 colorcode text-xl font-semibold hover:underline cursor-pointer' 
+       onClick={()=>{if(isConnected){navigate('meet')}else{toast.error("Connect your wallet first")}}}>&nbsp; Enter-Code-1234567</h1></div>
     </div>
     </>
     
