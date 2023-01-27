@@ -60,7 +60,7 @@ import { Player } from "@livepeer/react";
     </div>
   </div>
    
-  <div className="sec2 my-10">
+  <div className="sec2 my-5">
 
  <div className="streamb"><Player
       title="stream"
@@ -73,35 +73,22 @@ import { Player } from "@livepeer/react";
 
   </div>
  
- <div className="talkBox">
- <section className="s1">
- <h1>Stalls</h1>
- <div className="flexMap"> 
-    <div className="stl1" onClick={()=>{setOpen(true)}}> <img  src="stall.svg" alt="stall"/></div> 
-    <Stall/>
- </div>
- </section>
- <section className="s2">
-  <h1>Open Tables</h1>
-   <div className="flexMap"> <Table/>
-    <div className="stl1"> <img  src="tabl1.svg" alt="tabl1"/></div>
-    <div className="stl1"> <img  src="tabl2.svg" alt="tabl2"/></div> </div>
- </section>
- <section className="s3">
-    <h1>Discussion Rooms</h1>
-    <div className="flexMap"> 
-    <Drooms/>
-    <div className="stl1"> <img src="Group 27.svg" alt="grp2"/>
-    </div> </div>
- </section>
- </div>
+ 
   
- <div className="w-11/12 min-h-fit flex flex-row justify-around items-start my-5 mx-auto">
-    <div className="w-3/12 rounded-xl bg-black2 flex min-h-60 flex-col justify-between items-center py-3">
-      <h1 className="font-semibold text-xl absolute left-2">Stalls</h1>
+ <div className="w-11/12 min-h-fit flex flex-row justify-around items-start my-12 mx-auto">
+    <div className="w-3/12 rounded-2xl bg-black2 flex min-h-60 flex-col justify-between gap-y-5 py-5">
+      <h1 className="font-semibold text-2xl left-2 ml-7">Stalls</h1>
+      <Stall/><Stall/>
     </div>
-    <div className="w-3/12 rounded-xl bg-black2 flex h-60 flex-col justify-between items-center py-3"></div> 
-    <div className="w-1/3 rounded-xl bg-black2 flex h-60 flex-col justify-between items-center py-3"></div>
+
+
+
+    <div className="w-3/12 rounded-2xl bg-black2 flex min-h-60 flex-col justify-between gap-y-5 py-5">
+    <h1 className="font-semibold text-2xl left-2 ml-7">Tables</h1>
+      <Table/><Table/></div> 
+    <div className="w-1/3 rounded-2xl bg-black2 flex min-h-60 flex-col justify-between gap-y-5 py-5">
+      <h1 className="font-semibold text-2xl left-2 ml-7">Discussion Rooms</h1>
+      <Drooms/><Drooms/><Drooms/></div>
     </div>   
 
       

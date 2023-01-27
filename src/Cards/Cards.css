@@ -2,14 +2,16 @@
     border-radius: 22px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    height: 22rem;
-    width: 75%;
+    height: 18rem;
+    width: 80%;
     background: #0D0D0D;
-    
-    padding: 2rem 2rem 2rem 2rem;
-   
+     padding: 2rem 2rem 2rem 2rem;
+     margin:auto;
+     row-gap: 0.9rem;
+     
+
     
 }
 
@@ -20,16 +22,16 @@
     align-items: center;
     height: 5rem;
     width: 100%;
-    margin-top: 0.5rem;
+   
 }
 
   .head1 h3 {
-     font-size: 1.6rem;
+     font-size: 1.09rem;
      font-weight: 600;
   }  
 
   .head1 h2 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 700;
     color: gray;
  }  
@@ -38,7 +40,7 @@
 
 .profles {
     display: flex;
-    height: 6rem;
+    height: 3.7rem;
     width: auto;
     text-align: center;
     flex-direction: column;
@@ -48,14 +50,14 @@
 }
 
 .profles span {
-    font-size: 0.7rem;
+    font-size: 0.67rem;
     font-weight: 400;
     color: gray;
     
 }
 
 .nameit{
-   font-size: 0.7rem;
+   font-size: 0.67rem;
    font-weight: 500;
    color: #FFF;
 }
@@ -71,7 +73,7 @@
 .arrange1 {
     display:grid;
     grid-template-columns: 42% 42%;
-    gap: 1rem 2rem;
+    gap: 1rem 1.9rem;
     width: 100%;
     text-align: center;
 }
@@ -80,8 +82,8 @@
     background: linear-gradient(91.44deg, #D800A8 17.68%, #FF007A 88.87%);
     box-shadow: 0px 11.6153px 29.0382px rgba(253, 0, 124, 0.25);
     border-radius: 1rem;
-    width: 9rem;
-    height: 3.4rem;
+    width: 6.6rem;
+    height: 2.8rem;
     color: #000;
     font-weight: 700;
     font-size: 1rem;
@@ -89,7 +91,7 @@
 
 .mem{
     font-weight: 500;
-    font-size: 0.75rem;
+    font-size: 0.6rem;
     padding-right: 1rem;
 }
 
@@ -105,9 +107,9 @@
     justify-content: space-evenly;
     align-items: center;
     height: 14rem;
-    width: 60%;
+    width: 74%;
     background: #0D0D0D;
-    
+    margin: auto;
     padding: 2rem 2rem 2rem 2rem;
 }
 
@@ -123,22 +125,19 @@
 
  .profles1 {
     display: flex;
-    height: 5rem;
+    height: 3.7rem;
     width: auto;
     text-align: center;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-   
-
 }
 
 
 .nameit{
-   font-size: 0.7rem;
+   font-size: 0.68rem;
    font-weight: 500;
    color: #FFF;
-
 }
 
 
@@ -152,12 +151,12 @@
 
 .joindef{
    display: flex;
-   height: 5.3rem;
+   height: 3.9rem;
    text-align: center;
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   width: 5.3rem;
+   width: 3.7rem;
    background: #232323;
    border-radius: 12px;
 }
@@ -166,13 +165,13 @@
 
 .joindef1 h3 {
     color: gray;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-weight: 600;
     margin: 0;
 }
 .joindef1 h4 {
     color: gray;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     font-weight: 500;
     margin: 0;
 }
@@ -185,9 +184,10 @@
     justify-content: space-between;
     align-items: center;
     height: 15rem;
-    width: 75%;
+    width: 87%;
     background: #0D0D0D;
-    
+    margin: auto;
+    row-gap: 1rem;
     padding: 2rem 2rem 2rem 2rem;
    
 }
@@ -207,18 +207,20 @@
   .Dhead1{
     display: flex;
     flex-direction: column;
-    border: 2px solid white;
-    justify-content:space-around;
-    height: 60%;
+    justify-content:space-between;
+    height: auto;
+    width: 50%;
+    row-gap: 0.2rem;
   }
   .Dhead1 h2 {
-     font-size: 0.75rem;
+     font-size: 0.72rem;
      font-weight: 600;
-     margin:0;
+     line-height: 1.12;
+     
   }  
 
   .Dhead1 h3 {
-    font-size: 0.5rem;
+    font-size: 0.60rem;
     font-weight: 700;
     color: gray;
     margin: 0;
@@ -237,9 +239,9 @@
 .button123{
     background: linear-gradient(91.44deg, #D800A8 17.68%, #FF007A 88.87%);
     box-shadow: 0px 11.6153px 29.0382px rgba(253, 0, 124, 0.25);
-    border-radius: 0.85rem;
+    border-radius: 0.75rem;
     width: 4.5rem;
-    height: 2rem;
+    height: 2.3rem;
     color: #000;
     font-weight: 600;
     font-size: 0.84rem;

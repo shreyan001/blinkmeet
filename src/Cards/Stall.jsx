@@ -9,7 +9,7 @@ export default function Stall(){
                 <div className="nameit">{i.name}</div>
                 <span>{i.role}</span>
             </div>})}</div>
-            <div className="head1 botm"><p className="mem">+{Users.length - 1} Memebers </p><button className="button12">Join</button></div></div>
+            <div className="head1 botm"><p className="mem">+{Users.length - 1} Members </p><button className="button12">Join</button></div></div>
          
     )
                     
