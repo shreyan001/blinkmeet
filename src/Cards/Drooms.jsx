@@ -7,7 +7,6 @@ export default function Drooms(){
           <div className="arrange4">  {Users.map((i)=>{return <div className="profles4">
                 <img src={i.url} alt={i.name}/>
                 <div className="nameit4">{i.name}</div>
-                <span>{i.role}</span>
             </div>})}</div>
             </div>
     )

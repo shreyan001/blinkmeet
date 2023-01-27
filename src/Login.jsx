@@ -14,6 +14,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export  default function Login() {
 
+  const {isConnected } = useAccount();
+  const [code,setCode] = useState();
+
 //     const [meetName,setMeetName] = useState([]);
 
 // const [accName,setAccName] = useState([]);
@@ -32,10 +35,10 @@ const navigate = useNavigate();
 
 
 const redirect = () => {
-    if(authX && code.length===7){
+    if(isConnected && code.length===7){
        navigate('meet');
     }
-    else if(authX && code.length !==7) {
+    else if(isConnected && code.length !==7) {
         toast.error('Meet code must be 7 digits');
     }
     else{
