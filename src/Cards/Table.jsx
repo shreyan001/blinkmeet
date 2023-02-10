@@ -42,7 +42,7 @@ const items = new Array(x).fill(null);
                <div className="image-clip"><img src={ i.image} alt={i.name}/></div> 
                 <div className="nameit">{i.name}</div>
             </div>})}
-{items.map((_, idx) => <div onClick={()=>{onOpen(tableName)}} className="joindef cursor-pointer"><div className="joindef1"><h3>+</h3><h4>Join</h4></div></div>)}</div>
+{items.map((_, idx) => <div onClick={()=>{onOpen(tableName),synx2(tableName)}} className="joindef cursor-pointer"><div className="joindef1"><h3>+</h3><h4>Join</h4></div></div>)}</div>
            </div>
     )
                     
