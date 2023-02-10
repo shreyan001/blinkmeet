@@ -4,39 +4,53 @@ import { redirect, useNavigate } from 'react-router-dom';
 import { useState,useEffect } from 'react';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import Register from './Register';
 
 
 
-// const codeMkr = () => {
-//    return num = Date().getTime();
-//    };
+
 
 
 export  default function Login() {
 
-  const {isConnected } = useAccount();
+  const {isConnected,address } = useAccount();
   const [code,setCode] = useState();
+  const [isMOpen,setMOpen] = useState(false);
 
-//     const [meetName,setMeetName] = useState([]);
+  
 
-// const [accName,setAccName] = useState([]);
+const navigate = useNavigate();
 
 
-//  const createMeet = () => {
+async function handleLogin() {
+  const toastId  = toast.loading("Loading...")
+  const response = await fetch('/api/login', {
+    method: 'POST',
+    body: JSON.stringify({address}),
+    headers: {'Content-Type':'application/json'}
+  });
+  console.log(response.status);
+  if (response.status === 200) {
+    toast.update(toastId, { render: "All is good", type: "success", isLoading: false })
+   navigate('/meet');
+  } else {
+    toast.update(toastId, { render: "Register", type: "info", isLoading: false })
+    setMOpen(true);
+  }
+}
+
     
-//  }   
-
-
-
-
-const navigate = useNavigate();  
-
-
-
 
 const redirect = () => {
-    if(isConnected && code.length===7){
-       navigate('meet');
+   if(!code) {toast.error("please enter your code first")}
+    else if(isConnected && code.length===7){
+      handleLogin();
+      console.log("click")
+   
+    }
+    else if (isConnected && code.length===null){
+      toast.error('please enter your code first');
     }
     else if(isConnected && code.length !==7) {
         toast.error('Meet code must be 7 digits');
@@ -47,6 +61,7 @@ const redirect = () => {
 }
     
     return(  <>
+<Register address={address} isMOpen={isMOpen} onMClose={()=>{setMOpen(false)}} />
 <ToastContainer
 transition={Slide}
 position="top-right"
@@ -60,10 +75,13 @@ draggable
 pauseOnHover
 theme="dark"
 />
- <div className=" relative w-11/12 m-auto bg-black4 rounded-2xl h-fit pb-2" style={{"min-height":"86vh"}}>
-    <nav className=" relative flex-col mx-auto justify-between items-center w-11/12 mt-12 mb-3" >
+  
 
-       <div className='flex w-full mx-auto pt-5 flex-row justify-between items-center '>
+
+ <div className=" relative w-11/12 m-auto bg-black4 rounded-2xl h-fit pb-4" style={{"min-height":"86vh"}}>
+    <nav className=" relative flex-col mx-auto justify-between items-center w-11/12 mt-12 mb-8" >
+
+       <div className='flex w-full mx-auto pt-1 flex-row justify-between items-center '>
 
          <div className=" mx-2 flex flex-row justify-center items-center h-24 w-1/8">
             <img className="pt-4" src='logo.svg' alt='logo'/>
@@ -75,17 +93,17 @@ theme="dark"
        </div>
     </nav>
 
-    <div className=" md:mt-12 w-9/12 h-42 min-h-fit mx-auto text-center flex flex-col justify-between items-center">
+    <div className="mt-5 w-9/12 h-42 min-h-fit mx-auto text-center flex flex-col justify-between items-center">
         <h1 className='text-1xl antialiased	 w-1/2 font-bold'>Virtual Events made more social</h1>
         <p className='w-2/3 mt-5 font-semibold text-lg  text-gray-400'>Virtual exhibit halls are an important feature for virtual events because they allow attendees to interact.</p>
      </div>
-
+  
    <div className=" mx-auto mt-2 mb-5 w-1/2 flex flex-row justify-around items-center h-32">
        <div className=" w-2/5  flex flex-col justify-evenly items-start">
          <h1 className='text-semibold m-0 text-xs'>Enter Code or link</h1>
          <div className=' grid-rows-2 my-1.5 w-full h-fit'>
            <input className=' w-32 h-10 bg-black2 text-gray-200 rounded-xl' type ='number' onChange={e => {setCode(e.target.value)}}></input>
-           <button className=' button1 h-10 ml-2 text-sm w-20 rounded-xl text-black1 font-semibold' onClick={()=>{console.log("click");redirect()}} >Join</button>
+           <button className=' button1 h-10 ml-2 text-sm w-20 rounded-xl text-black1 font-semibold' onClick={()=>{redirect();}} >Join</button>
          </div>
          <p className=' text-small text-semibold text-gray-400'>Please enter your Event code given by organizer.</p>
        </div>
@@ -95,7 +113,7 @@ theme="dark"
      </div>
      <div className=" w-1/2 mx-auto my-2 h-fit flex flex-row justify-center items-center"><h3 className='font-semibold text-lg'>Join a Demo Meet - </h3>
        <h1 className='hover:opacity-60 colorcode text-xl font-semibold hover:underline cursor-pointer' 
-       onClick={()=>{if(isConnected){navigate('meet')}else{toast.error("Connect your wallet first")}}}>&nbsp; Enter-Code-1234567</h1></div>
+       onClick={()=>{if(isConnected){handleLogin()}else{toast.error("Connect your wallet first")}}}>&nbsp; Enter-Code-1234567</h1></div>
     </div>
     </>
     

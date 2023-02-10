@@ -8,55 +8,113 @@ import Stall from "./Cards/Stall";
 import Table from "./Cards/Table";
 import Drooms from "./Cards/Drooms";
 import { Player } from "@livepeer/react";
-
+import Users from "./Users";
+import axios from 'axios';
+import { ToastContainer, toast, Slide } from 'react-toastify';
 
  function Meets() {
   
   
   const [isOpen,setOpen] = useState(false);
   const {address} = useAccount();
+  const [isdata, setIsData] = useState([]);
+ const [meetName,setMeetName] = useState("address");
 
   console.log(address);
 
-  const iframeConfig = {
+
+ const iframeConfig = {
     roomUrl: "https://iframe.huddle01.com/test-room",
     width: "90%",
     noBorder: true
   };
 
-  const iframeConfig1 = {
-    roomUrl: "https://iframe.huddle01.com/101",
+
+  const handleDelete = async (name) => {
+    
+    axios.delete(`/api/tables/${name}`, {
+      data: {
+        addr: address
+      }
+    })
+    .then(res => {
+      setOpen(false); 
+      if(res.status===200){setOpen(false);
+    }})
+    .catch(error => {
+      console.error(error);
+    });
+   
+  }
+
+  const runMeet = (name) => {
+    if(isOpen === true) {
+      toast.error("Please close your existing meet first");
+    }
+    setOpen(true);
+    setMeetName(name);
+  };
+
+  
+  const tableRender = async (name)=>{
+    const toastId  = toast.loading("Loading...");
+    const addr = address;
+      const response = await fetch(`api/tables/${name}`, {
+        method: 'PUT',
+        body: JSON.stringify({name,addr}),
+        headers: {'Content-Type':'application/json'},
+      });
+    if (response.status === 200) {
+      runMeet(name);
+      toast.update(toastId, { render: "Joined", type: "success", isLoading: false, autoClose: 5000})
+      
+     ;
+    } else {
+      toast.update(toastId, { render: "Some error occured", type: "error", isLoading: false, autoClose: 5000 })
+      
+    };
+
+  }
+
+ 
+
+ const synx = async() => {
+    const {data} = await axios.get('/api/tables') 
+
+    setIsData(data.userDoc);
+  
+   
+ }
+    
+useEffect(()=>{synx();},[])
+ 
+  return (
+    <>
+    
+<ToastContainer
+transition={Slide}
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+/>
+<Modal className="mod1" iframeData={ {
+    roomUrl: `https://iframe.huddle01.com/${meetName}`,
     width: "100%",
     height: "97%",
     noBorder: true,
-  };
-
-  const iframeConfig2 = {
-    roomUrl: "https://iframe.huddle01.com/211",
-    width: "80%",
-  };
-  const iframeConfig3 = {
-    roomUrl: "https://iframe.huddle01.com/131",
-    width: "80%",
-  };
-
-  useEffect(() => {
-    huddleIframeApp.on("peer-join", (data) =>
-      console.log({ iframeData: data })
-    );
-    huddleIframeApp.on("peer-left", (data) =>
-      console.log({ iframeData: data })
-    );
-  }, []);
-
-  return (
-    <>
-    <Modal className="mod1" iframeData={iframeConfig1} address="address" isOpen={isOpen} onClose={()=>{setOpen(false)}}/>
+  }} address="address" isOpen={isOpen} name={meetName} onClose={(name)=>{handleDelete(name)}}/>
     <div className="stream">
     <div className="btn1"><img src="logo.svg " alt="V"/></div>
     
     <div className="miniNav"> <h1>Holiday hack meet
-         </h1> <Connect/>
+         </h1> <Connect/><button onClick={()=>{runMeet("table1");}}>runMeet</button>
     </div>
   </div>
    
@@ -78,19 +136,23 @@ import { Player } from "@livepeer/react";
  <div className="w-11/12 min-h-fit flex flex-row justify-around items-start my-12 mx-auto">
     <div className="w-3/12 rounded-2xl bg-black2 flex min-h-60 flex-col justify-between gap-y-5 py-5">
       <h1 className="font-semibold text-2xl left-2 ml-7">Stalls</h1>
-      <Stall/><Stall/>
+  
+    
+      
     </div>
-
-
-
+      
+     
+ 
     <div className="w-3/12 rounded-2xl bg-black2 flex min-h-60 flex-col justify-between gap-y-5 py-5">
     <h1 className="font-semibold text-2xl left-2 ml-7">Tables</h1>
-      <Table/><Table/></div> 
+    {isdata.map((e)=>{
+        return <Table tableName={e.tableName} onOpen={(name)=>{tableRender(name)}} />
+      })}</div> 
     <div className="w-1/3 rounded-2xl bg-black2 flex min-h-60 flex-col justify-between gap-y-5 py-5">
       <h1 className="font-semibold text-2xl left-2 ml-7">Discussion Rooms</h1>
-      <Drooms/><Drooms/><Drooms/></div>
+      </div>
     </div>   
-
+ 
       
        
   </>);

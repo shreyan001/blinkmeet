@@ -124,29 +124,39 @@
 }
 
  .profles1 {
+    margin-top: 0.2rem;
+    padding-right: 0.45rem;
     display: flex;
-    height: 3.7rem;
+    height: 4.5rem;
     width: auto;
     text-align: center;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 
 .nameit{
+   margin-top: 0.16rem;
    font-size: 0.68rem;
    font-weight: 500;
    color: #FFF;
 }
 
-
+.image-clip {
+    width: auto;
+    height: 3.9rem;
+    overflow: hidden;
+    border-radius: 10px;
+  }
 
 .profles1 img {
-    height: 50%;
-    width: auto;
-    margin:0;
- 
+    
+  height: 100%;
+  width: auto;
+    
+
 }
 
 .joindef{
@@ -156,9 +166,10 @@
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   width: 3.7rem;
+   max-width: 3.7rem;
    background: #232323;
    border-radius: 12px;
+   width: auto;
 }
 
 

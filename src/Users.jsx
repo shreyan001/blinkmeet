@@ -9,11 +9,7 @@ const Users =  [
                "name":"faat",
                "role":"CEO"
              },
-             {
-               "url" :"V.png",
-                "name":"faat",
-                "role":"CEO"
-             }
+           
     ];
 
 export default Users;

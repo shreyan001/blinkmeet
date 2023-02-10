@@ -1,20 +1,48 @@
-import Users from "../Users";
-import './Cards.css'
-export default function Table(){
-    let x = 4 - Users.length;
 
-    const loaddef = ()=>{
+import './Cards.css'
+import { useState,useEffect} from 'react';
+import axios from 'axios';
+export default function Table({onOpen,tableName}){
+
+    const [isdata, setData] = useState([]);
     
-        for (; x; ) {
-          return <div className="joindef"><div className="joindef1"><h3>+</h3><h4>Join</h4></div></div>
-          }
-    }
+    let x = 4 - isdata.length;
+ 
+    const synx2 = async(name) => {
+      const {data} = await axios.get(`api/tables/${name}`) 
+      console.log(data, name)
+      let data2 = data;
+     if (data2) {
+       
+    const {data} = await axios.post('api/users', {addr:data2} )
+    console.log(data,name);
+    setData(data);
+    }};
+
+    useEffect(() => {
+      synx2(tableName); 
+  }, []);
+
+ useEffect(() => {
+    const intervalId = setInterval(() => {
+    synx2(tableName); 
+
+    }, 10000);
+
+    return () => clearInterval(intervalId);
+  }, [isdata]);
+
+const items = new Array(x).fill(null);
+
+
     return (
-        <div className="table1">
-          <div className="arrange2">  {Users.map((i)=>{return <div className="profles1">
-                <img src={i.url} alt={i.name}/>
+               
+        <div className="table1">{console.log(isdata)}
+          <div className="arrange2">  {isdata.map((i)=>{return <div className="profles1">
+               <div className="image-clip"><img src={ i.image} alt={i.name}/></div> 
                 <div className="nameit">{i.name}</div>
-            </div>})}{loaddef()}</div>
+            </div>})}
+{items.map((_, idx) => <div onClick={()=>{onOpen(tableName)}} className="joindef cursor-pointer"><div className="joindef1"><h3>+</h3><h4>Join</h4></div></div>)}</div>
            </div>
     )
                     
