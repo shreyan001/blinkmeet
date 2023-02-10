@@ -114,7 +114,7 @@ theme="dark"
     <div className="btn1"><img src="logo.svg " alt="V"/></div>
     
     <div className="miniNav"> <h1>Holiday hack meet
-         </h1> <Connect/><button onClick={()=>{runMeet("table1");}}>runMeet</button>
+         </h1> <Connect/>
     </div>
   </div>
    
