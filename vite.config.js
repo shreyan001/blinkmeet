@@ -8,5 +8,19 @@ export default defineConfig({
       '/api' : 'https://spacemeet-api.onrender.com/'
      }
   },
+  optimizeDeps: {
+    include: ["@vite-mono/lib-cjs"],
+  },
+  build: {
+    commonjsOptions: {
+      include: [/lib-cjs/, /node_modules/],
+    },
+  },
+  define: {
+    'process.env': {}
+  },
   plugins: [react()]
 })
+
+
+

@@ -3,18 +3,19 @@ import './Cards.css'
 import { useState,useEffect} from 'react';
 import axios from 'axios';
 export default function Table({onOpen,tableName}){
-
-    const [isdata, setData] = useState([]);
+   const API = import.meta.env.VITE_API_URI;
+    const [isdata, setData] = useState([]); 
     
     let x = 4 - isdata.length;
  
     const synx2 = async(name) => {
-      const {data} = await axios.get(`api/tables/${name}`) 
+      console.log(`https://${API}/api/tables/${name}`);
+      const {data} = await axios.get(`https://${API}/api/tables/${name}`) 
       console.log(data, name)
       let data2 = data;
      if (data2) {
        
-    const {data} = await axios.post('api/users', {addr:data2} )
+    const {data} = await axios.post(`https://${API}/api/users`, {addr:data2} )
     console.log(data,name);
     setData(data);
     }};

@@ -11,7 +11,7 @@ import Screen from "./Stream/Screen";
 
 const client = createReactClient ({
   provider: studioProvider({
-    apiKey: "b6d6af23-1051-4063-bd61-d5c49a167410"
+    apiKey: import.meta.env.VITE_PUBL_KEY
   }),
 });
 

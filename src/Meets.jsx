@@ -21,7 +21,7 @@ import { ToastContainer, toast, Slide } from 'react-toastify';
  const [meetName,setMeetName] = useState("address");
 
   console.log(address);
-
+   const API = import.meta.env.VITE_API_URI;
 
  const iframeConfig = {
     roomUrl: "https://iframe.huddle01.com/test-room",
@@ -32,7 +32,7 @@ import { ToastContainer, toast, Slide } from 'react-toastify';
 
   const handleDelete = async (name) => {
     
-    axios.delete(`/api/tables/${name}`, {
+    axios.delete(`https://${API}/api/tables/${name}`, {
       data: {
         addr: address
       }
@@ -59,7 +59,7 @@ import { ToastContainer, toast, Slide } from 'react-toastify';
   const tableRender = async (name)=>{
     const toastId  = toast.loading("Loading...");
     const addr = address;
-      const response = await fetch(`api/tables/${name}`, {
+      const response = await fetch(`https://${API}/api/tables/${name}`, {
         method: 'PUT',
         body: JSON.stringify({name,addr}),
         headers: {'Content-Type':'application/json'},
@@ -79,7 +79,8 @@ import { ToastContainer, toast, Slide } from 'react-toastify';
  
 
  const synx = async() => {
-    const {data} = await axios.get('/api/tables') 
+  console.log(import.meta.env.API_API_URI)
+    const {data} = await axios.get(`https://${API}/api/tables`) 
 
     setIsData(data.userDoc);
   
