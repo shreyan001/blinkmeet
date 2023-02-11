@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 export default function Register({address,isMOpen,onMClose})  {
  
     if(isMOpen===false) {return null} ;
-
+    const API = import.meta.env.VITE_API_URI;
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [isReg, setIsReg] = useState(false);
@@ -17,7 +17,7 @@ export default function Register({address,isMOpen,onMClose})  {
 
       if(name.length <= 4){toast.error("Name must have atleast 5 characters")}
 
-      else { const response = await fetch('/api/register', {
+      else { const response = await fetch(`https://${API}/api/register`, {
         method: 'POST',
         body: JSON.stringify({img,name,addr}),
         headers: {'Content-Type':'application/json'},

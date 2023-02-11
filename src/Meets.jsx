@@ -79,7 +79,7 @@ import { ToastContainer, toast, Slide } from 'react-toastify';
  
 
  const synx = async() => {
-  console.log(import.meta.env.API_API_URI)
+ 
     const {data} = await axios.get(`https://${API}/api/tables`) 
 
     setIsData(data.userDoc);

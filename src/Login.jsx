@@ -21,16 +21,18 @@ export  default function Login() {
   
 
 const navigate = useNavigate();
-
+const API = import.meta.env.VITE_API_URI;
 
 async function handleLogin() {
   const toastId  = toast.loading("Loading...")
-  const response = await fetch('/api/login', {
+  const response = await fetch(`https://${API}/api/login`, {
     method: 'POST',
     body: JSON.stringify({address}),
     headers: {'Content-Type':'application/json'}
   });
-  console.log(response.status);
+  const json = await response.json();
+  console.log(json);
+  console.log(response.data);
   if (response.status === 200) {
     toast.update(toastId, { render: "All is good", type: "success", isLoading: false })
    navigate('/meet');
@@ -46,7 +48,7 @@ const redirect = () => {
    if(!code) {toast.error("please enter your code first")}
     else if(isConnected && code.length===7){
       handleLogin();
-      console.log("click")
+     console.log(`https://${API}/api/login`);
    
     }
     else if (isConnected && code.length===null){
@@ -94,8 +96,8 @@ theme="dark"
     </nav>
 
     <div className="mt-5 w-9/12 h-42 min-h-fit mx-auto text-center flex flex-col justify-between items-center">
-        <h1 className='text-1xl antialiased	 w-1/2 font-bold'>Virtual Events made more social</h1>
-        <p className='w-2/3 mt-5 font-semibold text-lg  text-gray-400'>Virtual exhibit halls are an important feature for virtual events because they allow attendees to interact.</p>
+        <h1 className='text-4xl antialiased	 w-7/12 font-bold'>Reinvent Your Virtual Socializing Experience</h1>
+        <p className='w-2/3 mt-5 font-semibold text-lg  text-gray-400'>Join the Interactive Revolution and Experience a Whole New Way of Connecting and Networking with Our Platform</p>
      </div>
   
    <div className=" mx-auto mt-2 mb-5 w-1/2 flex flex-row justify-around items-center h-32">
