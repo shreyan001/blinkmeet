@@ -11,13 +11,13 @@ export default function Register({address,isMOpen,onMClose})  {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [isReg, setIsReg] = useState(false);
-   let img_url = `https://robohash.org/set_set1/bgset_bg1/${address}.png`;
+   let img_url = `http://robohash.org/set_set1/bgset_bg1/${address}.png`;
 
     async function register(img, name, addr) {
 
       if(name.length <= 4){toast.error("Name must have atleast 5 characters")}
 
-      else { const response = await fetch(`https://${API}/api/register`, {
+      else { const response = await fetch(`http://${API}/api/register`, {
         method: 'POST',
         body: JSON.stringify({img,name,addr}),
         headers: {'Content-Type':'application/json'},

@@ -9,13 +9,13 @@ export default function Table({onOpen,tableName}){
     let x = 4 - isdata.length;
  
     const synx2 = async(name) => {
-      console.log(`https://${API}/api/tables/${name}`);
-      const {data} = await axios.get(`https://${API}/api/tables/${name}`) 
+      console.log(`http://${API}/api/tables/${name}`);
+      const {data} = await axios.get(`http://${API}/api/tables/${name}`) 
       console.log(data, name)
       let data2 = data;
      if (data2) {
        
-    const {data} = await axios.post(`https://${API}/api/users`, {addr:data2} )
+    const {data} = await axios.post(`http://${API}/api/users`, {addr:data2} )
     console.log(data,name);
     setData(data);
     }};
@@ -38,12 +38,12 @@ const items = new Array(x).fill(null);
 
     return (
                
-        <div className="table1">{console.log(isdata)}
+        <div className="table1">{console.log(isdata,tableName)}
           <div className="arrange2">  {isdata.map((i)=>{return <div className="profles1">
                <div className="image-clip"><img src={ i.image} alt={i.name}/></div> 
                 <div className="nameit">{i.name}</div>
             </div>})}
-{items.map((_, idx) => <div onClick={()=>{onOpen(tableName),synx2(tableName)}} className="joindef cursor-pointer"><div className="joindef1"><h3>+</h3><h4>Join</h4></div></div>)}</div>
+{items.map((_, idx) => <div key={idx} onClick={()=>{onOpen(tableName),synx2(tableName)}} className="joindef cursor-pointer"><div className="joindef1"><h3>+</h3><h4>Join</h4></div></div>)}</div>
            </div>
     )
                     

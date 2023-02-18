@@ -1,9 +1,9 @@
-import { Connect } from "./Connect";
+import { Connect } from "../functions/Connect";
 import { huddleIframeApp, HuddleIframe } from "@huddle01/huddle01-iframe";
 import { useAccount } from "wagmi";
 import { useState,useEffect } from "react";
-import Modal from "./Modal";
-import Screen from "./Stream/Screen";
+import Modal from "../functions/Modal";
+import Screen from "../Stream/Screen";
 import { useLivepeerProvider } from "@livepeer/react";
  
 const iframeConfig1 = {

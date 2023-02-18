@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import {Routes, Route} from "react-router-dom";
-import Meets from "./Meets";
-import Login from "./Login";
-import Event from "./Event";
+import Meets from "./Pages/Meets";
+import Login from "./Pages/Login";
+import Event from "./Pages/Event";
 import {createReactClient,studioProvider,LivepeerConfig} from '@livepeer/react';
 import Screen from "./Stream/Screen";
+import MobileWarning from "./functions/checkRes";
 
 
 
@@ -19,16 +20,25 @@ const client = createReactClient ({
 
 function App() {
 
+  const [showPopup,setShowPopup] = useState(false);
 
-  return (
-    <LivepeerConfig client={client}>
-
+  useEffect(() => {
+    const screenWidth = window.innerWidth;
+    if (screenWidth < 1024) {
+      setShowPopup(true);
+    }
+  }, []);
   
+  return (
+
+    <LivepeerConfig client={client}>
+  
+  <MobileWarning showPopup={showPopup} closePopup={()=>{setShowPopup(false)}}/>
   <Routes>  
     
      <Route path="event" element={<Event/>}/>
      <Route path="/" element={<Login/>}/>
-     <Route path="meet" element={<Meets/>}/>
+     <Route path="/meet" element={<Meets/>}/>
      <Route path="config" element={<Screen/>}/>
 
   </Routes>

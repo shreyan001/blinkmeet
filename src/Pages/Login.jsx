@@ -1,11 +1,11 @@
-import {Connect} from './Connect';
+import {Connect} from '../functions/Connect';
 import { useAccount } from 'wagmi';
 import { redirect, useNavigate } from 'react-router-dom';
 import { useState,useEffect } from 'react';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import Register from './Register';
+import Register from '../functions/Register';
 
 
 
@@ -25,7 +25,7 @@ const API = import.meta.env.VITE_API_URI;
 
 async function handleLogin() {
   const toastId  = toast.loading("Loading...")
-  const response = await fetch(`https://${API}/api/login`, {
+  const response = await fetch(`http://${API}/api/login`, {
     method: 'POST',
     body: JSON.stringify({address}),
     headers: {'Content-Type':'application/json'}
@@ -48,7 +48,7 @@ const redirect = () => {
    if(!code) {toast.error("please enter your code first")}
     else if(isConnected && code.length===7){
       handleLogin();
-     console.log(`https://${API}/api/login`);
+     console.log(`http://${API}/api/login`);
    
     }
     else if (isConnected && code.length===null){
@@ -111,7 +111,7 @@ theme="dark"
        </div>
         
        <h1 className='text-xl text-semibold text-gray-500'>or</h1> 
-     <div role="button"className=" button-x h-12 w-36 flex justify-center items-center"><h1 className='colorcode font-semibold text-center'>Create Meet</h1></div>        
+       <div role="button"className=" button-x h-12 w-36 flex justify-center items-center"><h1 className='colorcode font-semibold text-center'>Create Meet</h1></div>        
      </div>
      <div className=" w-1/2 mx-auto my-2 h-fit flex flex-row justify-center items-center"><h3 className='font-semibold text-lg'>Join a Demo Meet - </h3>
        <h1 className='hover:opacity-60 colorcode text-xl font-semibold hover:underline cursor-pointer' 
