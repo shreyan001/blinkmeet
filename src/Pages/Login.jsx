@@ -6,6 +6,7 @@ import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Register from '../functions/Register';
+import CreateMeet from '../functions/createMeet';
 
 
 
@@ -17,7 +18,7 @@ export  default function Login() {
   const {isConnected,address } = useAccount();
   const [code,setCode] = useState();
   const [isMOpen,setMOpen] = useState(false);
-
+  const [meetMod,setMeetMod]= useState(false);
   
 
 const navigate = useNavigate();
@@ -78,7 +79,7 @@ pauseOnHover
 theme="dark"
 />
   
-
+<CreateMeet meetMod={meetMod} address={address} onClose={()=>setMeetMod(false)}/>
 
  <div className=" relative w-11/12 m-auto bg-black4 rounded-2xl h-fit pb-4" style={{"min-height":"86vh"}}>
     <nav className=" relative flex-col mx-auto justify-between items-center w-11/12 mt-12 mb-8" >
@@ -111,7 +112,7 @@ theme="dark"
        </div>
         
        <h1 className='text-xl text-semibold text-gray-500'>or</h1> 
-       <div role="button"className=" button-x h-12 w-36 flex justify-center items-center"><h1 className='colorcode font-semibold text-center'>Create Meet</h1></div>        
+       <div role="button"className=" button-x h-12 w-36 flex justify-center items-center"><h1 onClick={()=>{setMeetMod(true)}}  className='colorcode font-semibold text-center'>Create Meet</h1></div>        
      </div>
      <div className=" w-1/2 mx-auto my-2 h-fit flex flex-row justify-center items-center"><h3 className='font-semibold text-lg'>Join a Demo Meet - </h3>
        <h1 className='hover:opacity-60 colorcode text-xl font-semibold hover:underline cursor-pointer' 

@@ -38,7 +38,8 @@ function App() {
     
      <Route path="event" element={<Event/>}/>
      <Route path="/" element={<Login/>}/>
-     <Route path="/meet" element={<Meets/>}/>
+     <Route path="/meet/:id" element={<Meets/>}/>
+     <Route exact path="/meet" element={<Meets/>}/>
      <Route path="config" element={<Screen/>}/>
 
   </Routes>

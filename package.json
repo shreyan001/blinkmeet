@@ -40,6 +40,7 @@
         "videojs-contrib-quality-levels": "^2.1.0",
         "videojs-hls-quality-selector": "^1.1.4",
         "wagmi": "^0.9.6",
+        "web3.storage": "^4.4.0",
         "yarn": "^1.22.19"
     },
     "devDependencies": {

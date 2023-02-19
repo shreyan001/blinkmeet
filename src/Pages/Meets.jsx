@@ -25,6 +25,7 @@ import logo from '../../public/logo.svg';
  const [meetName,setMeetName] = useState("useraddress");
  const [stallModal,setstallModal] = useState(false);
  const [stallModalName,setstallModalName] = useState([]);
+ const [name,setName] = useState([]);
    
  const useraddress = address;
   console.log(useraddress);
@@ -160,8 +161,18 @@ const tanx = async() => {
    
 }
 
+const bapx = async() => {
+ 
+  const {data} = await axios.get(`http://${API}/api/meets`) 
 
-useEffect(()=>{synx();
+  setName(data.userDoc.meetName);
+  console.log(data.userDoc);
+   
+}
+
+
+useEffect(()=>{bapx();
+               synx();
                cosx();
                tanx();},[])
  
@@ -199,7 +210,7 @@ theme="dark"
     <div className="stream">
     <div className="btn1"><img src={logo} alt="V"/></div>
     
-    <div className="miniNav"> <h1>Spacemeet conference
+    <div className="miniNav"> <h1>{name}
          </h1> <Connect/>
     </div>
   </div>
