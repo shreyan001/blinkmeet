@@ -24,7 +24,7 @@ const CreateMeet = ({address,onClose,meetMod}) => {
     const storage = new Web3Storage({ token: import.meta.env.VITE_REACT_APP_WEB3_STORAGE_TOKEN });
 
     try {
-      const cid = await storage.put([file]);
+      const cid = await storage.put([file], 'nft.png', { type: 'image/png' });
       setLogoCid(cid);
     } catch (error) {
       console.log(error);
@@ -44,9 +44,8 @@ const CreateMeet = ({address,onClose,meetMod}) => {
 
     const data = { meetName, meetLogo: `https://w3s.link/ipfs/${logoCid}`, Owner:address };
     try {
-      const response = await axios.post('/api/meets', data);
-       setMeetId(response.data.meetId);
-       navigate(`/meet/${meetId}`)
+      await axios.post('/api/meets', data).then(response=>navigate(`/meet/${response.data.meetId}`))
+     
     } catch (error) {
       console.log(error);
     }

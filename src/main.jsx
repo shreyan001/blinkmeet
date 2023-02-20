@@ -7,15 +7,19 @@ import '@rainbow-me/rainbowkit/styles.css';
 import { RainbowKitProvider,  darkTheme , getDefaultWallets} from '@rainbow-me/rainbowkit';
 
 import { configureChains, createClient, useAccount, WagmiConfig } from 'wagmi';
-import { mainnet, polygon } from 'wagmi/chains';
+import { polygonMumbai } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
-
+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 
 
 const { chains, provider } = configureChains(
-  [mainnet, polygon],
+  [polygonMumbai],
   [
-    publicProvider()
+    jsonRpcProvider({
+      rpc: chain => ({
+        http: import.meta.env.VITE_RPC_QUICKNODE,
+      }),
+    }), publicProvider()
   ]
 );
 const { connectors } = getDefaultWallets({

@@ -163,7 +163,7 @@ const tanx = async() => {
 
 const bapx = async() => {
  
-  const {data} = await axios.get(`http://${API}/api/meets`) 
+  const {data} = await axios.post(`http://${API}/api/meets/get`, {meetId:id} );
 
   setName(data.userDoc.meetName);
   console.log(data.userDoc);

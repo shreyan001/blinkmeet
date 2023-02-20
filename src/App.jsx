@@ -8,6 +8,8 @@ import {createReactClient,studioProvider,LivepeerConfig} from '@livepeer/react';
 import Screen from "./Stream/Screen";
 import MobileWarning from "./functions/checkRes";
 
+// import NFTMintingPage from "./Pages/meetConfig";
+
 
 
 const client = createReactClient ({
@@ -41,13 +43,14 @@ function App() {
      <Route path="/meet/:id" element={<Meets/>}/>
      <Route exact path="/meet" element={<Meets/>}/>
      <Route path="config" element={<Screen/>}/>
-
+ 
   </Routes>
   
   </LivepeerConfig>
 
   )
  
+ś
 
 
 }

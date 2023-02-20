@@ -26,6 +26,7 @@
         "hls.js": "^1.0.1",
         "json-server": "^0.17.1",
         "mux.js": "^5.11.0",
+        "nft.storage": "^7.0.0",
         "postcss-import": "^13.0.0",
         "postcss-preset-env": "^6.7.0",
         "react": "^18.2.0",
