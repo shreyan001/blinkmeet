@@ -1,154 +1,93 @@
-import React from 'react';
-import Image from 'next/image';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import * as React from 'react';
 import {
-  useAccount,
-  useContractRead,
-  useContractWrite,
   usePrepareContractWrite,
+  useContractWrite,
   useWaitForTransaction,
 } from 'wagmi';
-import { abi } from '../contract-abi';
-import FlipCard, { BackCard, FrontCard } from '../components/FlipCard';
-import  {
-  UsePrepareContractWriteConfig,
-  UseContractReadConfig,
-  UseContractWriteConfig,
-} from 'wagmi';
+import { Connect } from '../functions/Connect';
+import image from "./image.webp";
+import { useNavigate } from 'react-router-dom';
 
-const contractConfig = {
-  address: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
-  abi,
-};
 
-const NextPage = () => {
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
 
-  const [totalMinted, setTotalMinted] = React.useState(0);
-  const { isConnected } = useAccount();
-
-  const { config: contractWriteConfig } = usePrepareContractWrite({
-    ...contractConfig,
-    functionName: 'mint',
-  } , UsePrepareContractWriteConfig);
-
-  const {
-    data: mintData,
-    write: mint,
-    isLoading: isMintLoading,
-    isSuccess: isMintStarted,
-    error: mintError,
-  } = useContractWrite(contractWriteConfig , UseContractWriteConfig);
-
-  const { data: totalSupplyData } = useContractRead({
-    ...contractConfig,
-    functionName: 'totalSupply',
-    watch: true,
-  } , UseContractReadConfig);
-
-  const {
-    data: txData,
-    isSuccess: txSuccess,
-    error: txError,
-  } = useWaitForTransaction({
-    hash: mintData?.hash,
-  });
-
-  React.useEffect(() => {
-    if (totalSupplyData) {
-      setTotalMinted(totalSupplyData.toNumber());
-    }
-  }, [totalSupplyData]);
-
-  const isMinted = txSuccess;
-
+const MeetDetails = () => {
   return (
-    <div className="page">
-      <div className="container">
-        <div style={{ flex: '1 1 auto' }}>
-          <div style={{ padding: '24px 24px 24px 0' }}>
-            <h1>NFT Demo Mint</h1>
-            <p style={{ margin: '12px 0 24px' }}>
-              {totalMinted} minted so far!
-            </p>
-            <ConnectButton />
-
-            {mintError && (
-              <p style={{ marginTop: 24, color: '#FF6257' }}>
-                Error: {mintError.message}
-              </p>
-            )}
-            {txError && (
-              <p style={{ marginTop: 24, color: '#FF6257' }}>
-                Error: {txError.message}
-              </p>
-            )}
-
-            {mounted && isConnected && !isMinted && (
-              <button
-                style={{ marginTop: 24 }}
-                disabled={!mint || isMintLoading || isMintStarted}
-                className="button"
-                data-mint-loading={isMintLoading}
-                data-mint-started={isMintStarted}
-                onClick={() => mint?.()}
-              >
-                {isMintLoading && 'Waiting for approval'}
-                {isMintStarted && 'Minting...'}
-                {!isMintLoading && !isMintStarted && 'Mint'}
-              </button>
-            )}
-          </div>
-        </div>
-
-        <div style={{ flex: '0 0 auto' }}>
-          <FlipCard>
-            <FrontCard isCardFlipped={isMinted}>
-              <Image
-                layout="responsive"
-                src="/nft.png"
-                width="500"
-                height="500"
-                alt="RainbowKit Demo NFT"
-              />
-              <h1 style={{ marginTop: 24 }}>Rainbow NFT</h1>
-              <ConnectButton />
-            </FrontCard>
-            <BackCard isCardFlipped={isMinted}>
-              <div style={{ padding: 24 }}>
-                <Image
-                  src="/nft.png"
-                  width="80"
-                  height="80"
-                  alt="RainbowKit Demo NFT"
-                  style={{ borderRadius: 8 }}
-                />
-                <h2 style={{ marginTop: 24, marginBottom: 6 }}>NFT Minted!</h2>
-                <p style={{ marginBottom: 24 }}>
-                  Your NFT will show up in your wallet in the next few minutes.
-                </p>
-                <p style={{ marginBottom: 6 }}>
-                  View on{' '}
-                  <a href={`https://rinkeby.etherscan.io/tx/${mintData?.hash}`}>
-                    Etherscan
-                  </a>
-                </p>
-                <p>
-                  View on{' '}
-                  <a
-                    href={`https://testnets.opensea.io/assets/rinkeby/${txData?.to}/1`}
-                  >
-                    Opensea
-                  </a>
-                </p>
-              </div>
-            </BackCard>
-          </FlipCard>
+    <div className="flex items-center justify-between p-4">
+      <div className="flex items-center">
+        <img className="w-16 h-16 mr-4 rounded-full" src="/logo.png" alt="Meet avatar" />
+        <div>
+          <p className="font-bold text-xl text-white">EthforAll</p>
+          <p className="text-gray-400">Online</p>
         </div>
       </div>
+      <Connect/>
     </div>
   );
 };
 
-export default Home;
+const MintNFT = () => {
+  const navigate = useNavigate();
+  const {
+    
+    config,
+    error: prepareError,
+    isError: isPrepareError,
+  } = usePrepareContractWrite({
+    address: '0xa0ac35347655943eb3355d49ae28d071da42858a',
+    abi: [
+      {
+        name: 'mint',
+        type: 'function',
+        stateMutability: 'nonpayable',
+        inputs: [],
+        outputs: [],
+      },
+    ],
+    functionName: 'mint',
+  });
+  const { data, error, isError, write } = useContractWrite(config);
+
+  const { isLoading, isSuccess } = useWaitForTransaction({
+    hash: data?.hash,
+  });
+
+  return (
+    <div className="rounded-lg h-auto w-full flex flex-col mt-12 items-center justify-center p-4">
+      <div className="w-2/3 h-fit flex flex-row items-center p-5 bg-black1 rounded-3xl">
+        <img className="w-1/2 h-auto " src={image} alt="NFT preview" />
+       
+      <div className="flex flex-col items-center w-1/2 h-auto justify-center gap-5 ">
+       <div className="flex flex-col items-center w-7/12 h-full py-10 bg-black4 rounded-2xl gap-10 justify-center"> <h2 className="text-xl font-bold mb-2">Mint BlinkPass</h2>
+        <button disabled={!write || isLoading} onClick={() => write()} className="button1 text-white rounded-lg px-4 py-2">
+          {isLoading ? 'Minting...' : 'Mint'}
+        </button>
+        {isSuccess && (
+          <div className="text-green-500 mt-2">
+            Successfully minted your NFT!
+            <div>
+              <a href={`//https://mumbai.polygonscan.com//tx/${data?.hash}`}>polygonscan</a>
+              <button onClick={()=>navigate('/meet/53382')} className='button1'>Enter Meet</button>
+            </div>
+          </div>
+        )}
+        {(isPrepareError || isError) && (
+          <div className="text-red-500 mt-2">
+            Error: {(prepareError || error)?.message}
+          </div>
+        )}
+      </div></div></div>
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <div className="bg-gray-900 min-h-screen">
+      <MeetDetails />
+      <MintNFT />
+    </div>
+  );
+};
+
+export default App;
+

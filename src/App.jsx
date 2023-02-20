@@ -7,6 +7,8 @@ import Event from "./Pages/Event";
 import {createReactClient,studioProvider,LivepeerConfig} from '@livepeer/react';
 import Screen from "./Stream/Screen";
 import MobileWarning from "./functions/checkRes";
+import MintNFT from "./Pages/meetPass";
+
 
 // import NFTMintingPage from "./Pages/meetConfig";
 
@@ -41,8 +43,9 @@ function App() {
      <Route path="event" element={<Event/>}/>
      <Route path="/" element={<Login/>}/>
      <Route path="/meet/:id" element={<Meets/>}/>
-     <Route exact path="/meet" element={<Meets/>}/>
      <Route path="config" element={<Screen/>}/>
+     <Route path="/meet/mint/53382" element={<MintNFT/>}/>
+     
  
   </Routes>
   
@@ -50,7 +53,7 @@ function App() {
 
   )
  
-ś
+
 
 
 }

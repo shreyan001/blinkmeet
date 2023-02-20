@@ -11,7 +11,7 @@ import axios from 'axios';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import StallModal from "../Cards/StallModal";
 import { useParams } from 'react-router-dom';
-import logo from '../../public/logo.svg';
+import logo from '../../public/logo2.jpg';
 
 
  function Meets() {
@@ -208,7 +208,7 @@ theme="dark"
   }} useraddress="useraddress" isOpen={isOpen2} name={meetName} onClose={(name)=>{handleDelete2(name)}} key={2}/>
 
     <div className="stream">
-    <div className="btn1"><img src={logo} alt="V"/></div>
+    <div className="btn1 overflow-hidden"><img className="pb-3" src={logo} alt="V"/></div>
     
     <div className="miniNav"> <h1>{name}
          </h1> <Connect/>

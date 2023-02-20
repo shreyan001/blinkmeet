@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Register from '../functions/Register';
 import CreateMeet from '../functions/createMeet';
+import NftVerificationComponent from '../functions/CheckNft';
 
 
 
@@ -19,6 +20,7 @@ export  default function Login() {
   const [code,setCode] = useState();
   const [isMOpen,setMOpen] = useState(false);
   const [meetMod,setMeetMod]= useState(false);
+
   
 
 const navigate = useNavigate();
@@ -36,7 +38,7 @@ async function handleLogin() {
   console.log(response.data);
   if (response.status === 200) {
     toast.update(toastId, { render: "All is good", type: "success", isLoading: false })
-   navigate('/meet');
+    navigate('meet/mint/53382')
   } else {
     toast.update(toastId, { render: "Register", type: "info", isLoading: false })
     setMOpen(true);
@@ -47,7 +49,7 @@ async function handleLogin() {
 
 const redirect = () => {
    if(!code) {toast.error("please enter your code first")}
-    else if(isConnected && code.length===7){
+    else if(isConnected && code.length===5){
       handleLogin();
      console.log(`http://${API}/api/login`);
    
@@ -56,7 +58,7 @@ const redirect = () => {
       toast.error('please enter your code first');
     }
     else if(isConnected && code.length !==7) {
-        toast.error('Meet code must be 7 digits');
+        toast.error('Meet code must be 5 digits');
     }
     else{
         toast.error('Please connect your wallet first');
@@ -80,6 +82,7 @@ theme="dark"
 />
   
 <CreateMeet meetMod={meetMod} address={address} onClose={()=>setMeetMod(false)}/>
+{isConnected && <NftVerificationComponent userAddress={address}/>}
 
  <div className=" relative w-11/12 m-auto bg-black4 rounded-2xl h-fit pb-4" style={{"min-height":"86vh"}}>
     <nav className=" relative flex-col mx-auto justify-between items-center w-11/12 mt-12 mb-8" >
@@ -87,8 +90,8 @@ theme="dark"
        <div className='flex w-full mx-auto pt-1 flex-row justify-between items-center '>
 
          <div className=" mx-2 flex flex-row justify-center items-center h-24 w-1/8">
-            <img className="pt-4" src='logo.svg' alt='logo'/>
-            <h1 className=' font-semibold m-0 text-lg pr-3'>SpaceMeet</h1></div>
+         <div className="h-fit w-fit  border-1 border-solid border-white "><img className=" h-14 w-auto" src='logo2.jpg' alt='logo'/></div>   
+            <h1 className=' font-semibold m-0 text-lg pr-3'>BlinkMeet</h1></div>
         <div className="mx-2 flex flex-row justify-center items-center h-24 w-fit">
             <a className='hover:opacity-60 cursor-pointer colorcode font-semibold text-lg px-3'
                 onClick={()=>{toast.dark("Coming Soon")}}
@@ -116,7 +119,7 @@ theme="dark"
      </div>
      <div className=" w-1/2 mx-auto my-2 h-fit flex flex-row justify-center items-center"><h3 className='font-semibold text-lg'>Join a Demo Meet - </h3>
        <h1 className='hover:opacity-60 colorcode text-xl font-semibold hover:underline cursor-pointer' 
-       onClick={()=>{if(isConnected){handleLogin()}else{toast.error("Connect your wallet first")}}}>&nbsp; Enter-Code-1234567</h1></div>
+       onClick={()=>{if(isConnected){handleLogin()}else{toast.error("Connect your wallet first")}}}>&nbsp; Enter-EthForAll</h1></div>
     </div>
     </>
     
